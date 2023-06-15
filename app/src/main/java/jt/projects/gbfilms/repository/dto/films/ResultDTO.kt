@@ -1,4 +1,4 @@
-package jt.projects.gbfilms.repository.dto
+package jt.projects.gbfilms.repository.dto.films
 
 data class ResultDTO(
     val description: String?="",

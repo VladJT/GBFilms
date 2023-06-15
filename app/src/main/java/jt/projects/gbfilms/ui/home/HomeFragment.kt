@@ -6,14 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import jt.projects.gbfilms.databinding.FragmentHomeBinding
 import jt.projects.gbfilms.model.Film
 import jt.projects.gbfilms.model.FilmData
+import jt.projects.gbfilms.ui.MainActivity
 import jt.projects.gbfilms.utils.ViewModelNotInitException
 import jt.projects.gbfilms.utils.showSnackbar
-import org.koin.android.ext.android.getKoin
+import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
 
 class HomeFragment : Fragment() {
@@ -29,12 +29,13 @@ class HomeFragment : Fragment() {
 //        ViewModelProvider(requireActivity())[HomeViewModel::class.java] // переживает создание активити
 //    }
 
-    private val viewModel: HomeViewModel by lazy { getKoin().get<HomeViewModel>() }
+    // private val viewModel: HomeViewModel by lazy { getKoin().get() }
+    private val viewModel: HomeViewModel by activityViewModel()
 
     private val filmsAdapter: FilmsAdapter by lazy { FilmsAdapter(::onItemClick) }
 
     private fun onItemClick(data: Film) {
-        showSnackbar(data.toString())
+        (requireActivity() as MainActivity).showFilmDetails(data)
     }
 
     override fun onCreateView(
@@ -75,7 +76,9 @@ class HomeFragment : Fragment() {
                 binding.loadingFrameLayout.isVisible = false
                 binding.editTextSearchLayout.error = null
                 filmsAdapter.setData(data.filmList)
-                //    binding.mainActivityRecyclerview.smoothScrollToPosition(0)
+                if (data.filmList.isEmpty()) {
+                    showSnackbar("Не найдено подходящих фильмов")
+                }
             }
 
             is FilmData.Loading -> {

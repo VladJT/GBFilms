@@ -28,7 +28,6 @@ val repoModule = module {
 
 
 val vmModule = module {
-
     viewModel {
         HomeViewModel(
             interactor = get()

@@ -1,7 +1,7 @@
 package jt.projects.gbfilms.repository.mappers
 
 import jt.projects.gbfilms.model.Film
-import jt.projects.gbfilms.repository.dto.FilmDTO
+import jt.projects.gbfilms.repository.dto.films.FilmDTO
 
 fun FilmDTO.toFilmList(): List<Film> {
     val result = mutableListOf<Film>()

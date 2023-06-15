@@ -1,7 +1,7 @@
 package jt.projects.gbfilms.repository
 
 import io.reactivex.rxjava3.core.Single
-import jt.projects.gbfilms.repository.dto.FilmDTO
+import jt.projects.gbfilms.repository.dto.films.FilmDTO
 import retrofit2.http.GET
 import retrofit2.http.Path
 
