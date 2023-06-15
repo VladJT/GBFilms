@@ -36,7 +36,11 @@ class MainActivity : AppCompatActivity() {
         supportFragmentManager.registerFragmentLifecycleCallbacks(fragmentLifecycleCallback, false)
 
         if (savedInstanceState == null) {
-            navigateToFragment(HomeFragment.newInstance(), false)
+         //   navigateToFragment(HomeFragment.newInstance(), false)
+
+            navigateToFragment(DetailsFragment.newInstance().apply {
+                arguments = Bundle().apply { putString(FILM_ID_KEY, "tt0110413") }
+            }, isAddToBackStack = true)
         }
     }
 

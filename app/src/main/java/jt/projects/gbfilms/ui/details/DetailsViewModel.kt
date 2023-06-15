@@ -1,4 +1,4 @@
-package jt.projects.gbfilms.ui.home
+package jt.projects.gbfilms.ui.details
 
 import android.annotation.SuppressLint
 import androidx.lifecycle.LiveData
@@ -9,32 +9,34 @@ import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.schedulers.Schedulers
 import jt.projects.gbfilms.interactors.FilmsInteractor
 import jt.projects.gbfilms.model.FilmData
+import jt.projects.gbfilms.model.FilmDetailsData
+import jt.projects.gbfilms.repository.FilmsRemoteDataSource
 import jt.projects.gbfilms.utils.disposeBy
 
 
-class HomeViewModel(private val interactor: FilmsInteractor) : ViewModel() {
+class DetailsViewModel(private val interactor: FilmsInteractor) : ViewModel() {
 
-    private val liveData: MutableLiveData<FilmData> = MutableLiveData()
-    val liveDataToObserve: LiveData<FilmData>
+    private val liveData: MutableLiveData<FilmDetailsData> = MutableLiveData()
+    val liveDataToObserve: LiveData<FilmDetailsData>
         get() {
             return liveData
         }
     private val compositeDisposable = CompositeDisposable()
 
-    @SuppressLint("CheckResult")
-    fun loadFilmsBySearchText(searchText: String) {
-        liveData.value = FilmData.Loading(null)
 
-        if (searchText.isBlank()) {
-            liveData.value = FilmData.Error(RuntimeException("Введите текст для поиска"))
+    fun loadFilmDetailsById(filmId: String) {
+        liveData.value = FilmDetailsData.Loading(null)
+
+        if (filmId.isBlank()) {
+            liveData.value = FilmDetailsData.Error(RuntimeException("Пустой id фильма"))
         } else {
-            interactor.getFilmsBySearchText(searchText)
+            interactor.getFilmDetailsByFilmId(filmId)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({ data ->
-                    liveData.value = FilmData.Success(data)
+                    liveData.value = FilmDetailsData.Success(data)
                 }, { e ->
-                    liveData.value = FilmData.Error(e)
+                    liveData.value = FilmDetailsData.Error(e)
                 })
                 .disposeBy(compositeDisposable)
         }

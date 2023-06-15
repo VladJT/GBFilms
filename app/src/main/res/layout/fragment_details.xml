@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="4dp">
 
 
     <ImageView
@@ -16,13 +17,13 @@
         tools:src="@tools:sample/avatars" />
 
     <TextView
-        android:id="@+id/tv_id"
+        android:id="@+id/tv_rating"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#16629F"
         android:gravity="center_horizontal"
         android:textColor="@color/white"
-        android:textSize="@dimen/text_size_standard"
+        android:textSize="@dimen/text_size_big"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -32,7 +33,7 @@
         android:id="@+id/tv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="@dimen/text_size_standard"
+        android:textSize="@dimen/text_size_big"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_image"
@@ -40,12 +41,43 @@
 
     <TextView
         android:id="@+id/tv_description"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:scrollbarStyle="insideInset"
+        android:scrollbars="vertical"
+        android:textSize="@dimen/text_size_standard"
+        app:layout_constraintBottom_toTopOf="@+id/guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title"
+        tools:text="Film description" />
+
+    <TextView
+        android:id="@+id/tv_releaseDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="@dimen/text_size_standard"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_title"
-        tools:text="Film description" />
+        app:layout_constraintTop_toTopOf="@+id/guideline"
+        tools:text="14.06.2023" />
+
+    <TextView
+        android:id="@+id/tv_runtimeMins"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_size_standard"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_releaseDate"
+        tools:text="120 min" />
+
+    <TextView
+        android:id="@+id/tv_awards"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_size_standard"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_runtimeMins"
+        tools:text="Top rated movie #35 | Awards, 6 wins , 17 nominations" />
 
 
     <FrameLayout
@@ -59,5 +91,12 @@
 
         <include layout="@layout/loading_layout" />
     </FrameLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="549dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
