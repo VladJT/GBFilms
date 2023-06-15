@@ -5,17 +5,162 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:scrollbars="vertical"
     android:padding="4dp">
+
+    <View
+        android:id="@+id/iv_bg"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:background="#4A4747"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/iv_image"
-        android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_width="150dp"
+        android:layout_height="200dp"
+        android:layout_marginStart="8dp"
         android:scaleType="centerCrop"
+        app:layout_constraintBottom_toTopOf="@id/guideline2"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:src="@tools:sample/backgrounds/scenic" />
+
+    <com.mikhaellopez.circularprogressbar.CircularProgressBar
+        android:id="@+id/ratingCircle"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="8dp"
+        app:cpb_background_progressbar_color="#b6bbd8"
+        app:cpb_background_progressbar_width="2dp"
+        app:cpb_progress="84"
+        app:cpb_progress_direction="to_right"
+        app:cpb_progress_max="100"
+        app:cpb_progressbar_color="#06C627"
+        app:cpb_progressbar_width="5dp"
+        app:cpb_round_border="true"
+        app:layout_constraintBottom_toBottomOf="@id/iv_bg"
+        app:layout_constraintStart_toStartOf="@id/guideline3" />
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="30dp"
+        android:textColor="@color/white"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:src="@tools:sample/avatars" />
+        tools:text="Film name" />
+
+    <TextView
+        android:id="@+id/label_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Описание"
+        android:textSize="@dimen/text_size_big"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/guideline2" />
+
+    <TextView
+        android:id="@+id/tv_description"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:scrollbars="vertical"
+        android:textSize="@dimen/text_size_standard"
+        app:layout_constraintBottom_toTopOf="@id/guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/label_description"
+        app:layout_constraintVertical_bias="1.0"
+        tools:text="Film description" />
+
+    <TextView
+        android:id="@+id/tv_releaseDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_standard"
+        app:layout_constraintStart_toStartOf="@id/guideline3"
+        app:layout_constraintTop_toTopOf="@id/iv_image"
+        tools:text="14.06.2023" />
+
+    <TextView
+        android:id="@+id/tv_runtimeMins"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_standard"
+        app:layout_constraintStart_toStartOf="@id/guideline3"
+        app:layout_constraintTop_toBottomOf="@id/tv_releaseDate"
+        tools:text="120 min" />
+
+    <TextView
+        android:id="@+id/tv_awards"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:paddingEnd="4dp"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_standard"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/guideline3"
+        app:layout_constraintTop_toBottomOf="@id/tv_runtimeMins"
+        tools:text="Top rated movie #35 | Awards, 6 wins , 17 nominations" />
+
+    <TextView
+        android:id="@+id/label_actors"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Актерский состав"
+        android:textSize="@dimen/text_size_big"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/rvActors"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvActors"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:background="#DAD9D9"
+        android:orientation="horizontal"
+        android:overScrollMode="never"
+        android:scrollbars="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toTopOf="@+id/tv_rating"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:listitem="@layout/item_actor" />
+
+    <TextView
+        android:id="@+id/tv_metacritic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_big"
+        android:gravity="center_horizontal"
+        app:layout_constraintBottom_toBottomOf="@id/ratingCircle"
+        app:layout_constraintEnd_toEndOf="@id/ratingCircle"
+        app:layout_constraintStart_toStartOf="@id/ratingCircle"
+        app:layout_constraintTop_toTopOf="@id/ratingCircle"
+        tools:text="84" />
+
+    <TextView
+        android:id="@+id/label_metacritic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_standard"
+        app:layout_constraintBottom_toBottomOf="@id/iv_bg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/ratingCircle"
+        app:layout_constraintTop_toTopOf="@id/ratingCircle"
+        tools:text="Metacritic rating" />
 
     <TextView
         android:id="@+id/tv_rating"
@@ -28,81 +173,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:text="Film ID" />
+        tools:text="IMDB Rating" />
 
-    <TextView
-        android:id="@+id/tv_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="@dimen/text_size_big"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_image"
-        tools:text="Film name" />
-
-    <TextView
-        android:id="@+id/tv_description"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:scrollbarStyle="insideInset"
-        android:scrollbars="vertical"
-        android:textSize="@dimen/text_size_standard"
-        app:layout_constraintBottom_toTopOf="@+id/guideline"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_title"
-        tools:text="Film description" />
-
-    <TextView
-        android:id="@+id/tv_releaseDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="@dimen/text_size_standard"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline"
-        tools:text="14.06.2023" />
-
-    <TextView
-        android:id="@+id/tv_runtimeMins"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="@dimen/text_size_standard"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_releaseDate"
-        tools:text="120 min" />
-
-    <TextView
-        android:id="@+id/tv_awards"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="@dimen/text_size_standard"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_runtimeMins"
-        tools:text="Top rated movie #35 | Awards, 6 wins , 17 nominations" />
-
-    <TextView
-        android:id="@+id/label_actors"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Актерский состав"
-        android:textSize="@dimen/text_size_big"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_awards" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvActors"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#DAD9D9"
-        android:orientation="horizontal"
-        android:overScrollMode="never"
-        android:scrollbars="horizontal"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/label_actors"
-        tools:listitem="@layout/item_film" />
 
 
     <androidx.constraintlayout.widget.Guideline
@@ -110,7 +182,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="549dp" />
+        app:layout_constraintGuide_begin="450dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="316dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="176dp" />
 
 
     <FrameLayout
@@ -124,5 +210,6 @@
 
         <include layout="@layout/loading_layout" />
     </FrameLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

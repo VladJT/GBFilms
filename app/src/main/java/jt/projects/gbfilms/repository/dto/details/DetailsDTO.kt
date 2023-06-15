@@ -25,7 +25,7 @@ data class DetailsDTO(
     val keywords: String,
     val languageList: List<Language>,
     val languages: String,
-    val metacriticRating: String,
+    val metacriticRating: String?,
     val originalTitle: String,
     val plot: String,
     val plotLocal: String,
