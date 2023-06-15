@@ -42,7 +42,10 @@ class FilmsAdapter(
         fun bind(data: Film) {
             if (layoutPosition != RecyclerView.NO_POSITION) {
                 with(binding) {
+                    tvId.text = data.id
+                    tvDescription.text = data.description
                     tvTitle.text = data.title
+
                     ivImage.load(data.imageUrl) {
                         error(android.R.drawable.ic_delete)
                     }

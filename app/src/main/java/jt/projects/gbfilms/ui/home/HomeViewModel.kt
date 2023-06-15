@@ -5,19 +5,21 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.schedulers.Schedulers
 import jt.projects.gbfilms.model.FilmData
+import jt.projects.gbfilms.repository.FilmsRemoteDataSource
+import jt.projects.gbfilms.utils.disposeBy
 
 
-class HomeViewModel : ViewModel() {
+class HomeViewModel(private val interactor: HomeInteractor) : ViewModel() {
 
     private val liveData: MutableLiveData<FilmData> = MutableLiveData()
     val liveDataToObserve: LiveData<FilmData>
         get() {
             return liveData
         }
-
-    private val interactor = HomeInteractor()
+    private val compositeDisposable = CompositeDisposable()
 
     @SuppressLint("CheckResult")
     fun loadFilmsBySearchText(searchText: String) {
@@ -34,8 +36,11 @@ class HomeViewModel : ViewModel() {
                 }, { e ->
                     liveData.value = FilmData.Error(e)
                 })
+                .disposeBy(compositeDisposable)
         }
     }
 
-
+    fun clear() {
+        compositeDisposable.dispose()
+    }
 }

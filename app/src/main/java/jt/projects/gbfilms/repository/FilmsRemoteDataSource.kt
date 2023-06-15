@@ -1,6 +1,9 @@
 package jt.projects.gbfilms.repository
 
 
+import io.reactivex.rxjava3.core.Single
+import jt.projects.gbfilms.BuildConfig
+import jt.projects.gbfilms.repository.dto.FilmDTO
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -9,14 +12,17 @@ import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.io.IOException
 
-class FilmsRemoteDataSource {
+class FilmsRemoteDataSource : IFilmsRepo {
 
-    fun getApi(): FilmsAPI = Retrofit.Builder().baseUrl(jt.projects.gbfilms.BuildConfig.BASE_URL)
+    private fun getApi(): FilmsAPI = Retrofit.Builder().baseUrl(jt.projects.gbfilms.BuildConfig.BASE_URL)
         .addConverterFactory(GsonConverterFactory.create())
         .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
           .client(createOkHttpClient(MyInterceptor()))
         .build()
         .create(FilmsAPI::class.java)
+
+    override fun getFilmsBySearchText(searchText: String): Single<FilmDTO> =
+        getApi().getFilms(BuildConfig.API_KEY, searchText)
 
 
     /**

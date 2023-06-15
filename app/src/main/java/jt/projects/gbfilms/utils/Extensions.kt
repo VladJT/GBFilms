@@ -5,6 +5,8 @@ import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.google.android.material.snackbar.Snackbar
+import io.reactivex.rxjava3.disposables.CompositeDisposable
+import io.reactivex.rxjava3.disposables.Disposable
 
 
 /**
@@ -48,4 +50,10 @@ fun Fragment.showSnackbarWithAction(
         text,
         Snackbar.LENGTH_SHORT
     ).setAction(actionText, action).show()
+}
+
+
+// RXJAVA 3
+fun Disposable.disposeBy(c: CompositeDisposable) {
+    c.add(this)
 }
