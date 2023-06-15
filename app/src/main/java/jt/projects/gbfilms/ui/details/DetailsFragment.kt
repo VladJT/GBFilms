@@ -26,6 +26,8 @@ class DetailsFragment : Fragment() {
 
     private val viewModel: DetailsViewModel by activityViewModel()
 
+    private val actorsAdapter by lazy { ActorsAdapter() }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
@@ -49,6 +51,9 @@ class DetailsFragment : Fragment() {
             viewModel.loadFilmDetailsById(filmId)
         }
 
+        binding.rvActors.apply {
+            adapter = actorsAdapter
+        }
     }
 
     private fun renderData(data: FilmDetailsData) {
@@ -56,6 +61,7 @@ class DetailsFragment : Fragment() {
             is FilmDetailsData.Success -> {
                 binding.loadingFrameLayout.isVisible = false
                 showData(data.filmData)
+                actorsAdapter.setData(data.filmData.actorList)
             }
 
             is FilmDetailsData.Loading -> {

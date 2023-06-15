@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:scrollbars="vertical"
     android:padding="4dp">
-
 
     <ImageView
         android:id="@+id/iv_image"
@@ -79,6 +80,38 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_runtimeMins"
         tools:text="Top rated movie #35 | Awards, 6 wins , 17 nominations" />
 
+    <TextView
+        android:id="@+id/label_actors"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Актерский состав"
+        android:textSize="@dimen/text_size_big"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_awards" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvActors"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#DAD9D9"
+        android:orientation="horizontal"
+        android:overScrollMode="never"
+        android:scrollbars="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/label_actors"
+        tools:listitem="@layout/item_film" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="549dp" />
+
 
     <FrameLayout
         android:id="@+id/loading_frame_layout"
@@ -91,12 +124,5 @@
 
         <include layout="@layout/loading_layout" />
     </FrameLayout>
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="549dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

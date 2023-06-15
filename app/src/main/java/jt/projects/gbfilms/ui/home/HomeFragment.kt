@@ -32,7 +32,7 @@ class HomeFragment : Fragment() {
     // private val viewModel: HomeViewModel by lazy { getKoin().get() }
     private val viewModel: HomeViewModel by activityViewModel()
 
-    private val filmsAdapter: FilmsAdapter by lazy { FilmsAdapter(::onItemClick) }
+    private val filmsAdapter by lazy { FilmsAdapter(::onItemClick) }
 
     private fun onItemClick(data: Film) {
         (requireActivity() as MainActivity).showFilmDetails(data)
