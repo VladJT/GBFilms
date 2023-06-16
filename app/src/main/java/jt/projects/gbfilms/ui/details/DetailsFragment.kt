@@ -1,7 +1,6 @@
 package jt.projects.gbfilms.ui.details
 
 import android.os.Bundle
-import android.text.method.ScrollingMovementMethod
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -87,7 +86,7 @@ class DetailsFragment : Fragment() {
 
             tvTitle.text = data.fullTitle
             tvDescription.text = data.plotLocal
-            tvDescription.movementMethod = ScrollingMovementMethod()
+            //          tvDescription.movementMethod = ScrollingMovementMethod()
 
             tvReleaseDate.text = "Дата выхода: ${data.releaseDate}"
             tvRuntimeMins.text = "Длительность: ${data.runtimeStr}"
