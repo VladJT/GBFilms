@@ -9,7 +9,6 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import jt.projects.gbfilms.databinding.FragmentHomeBinding
-import jt.projects.gbfilms.model.Film
 import jt.projects.gbfilms.model.FilmData
 import jt.projects.gbfilms.ui.MainActivity
 import jt.projects.gbfilms.utils.ViewModelNotInitException
@@ -35,8 +34,8 @@ class HomeFragment : Fragment() {
 
     private val filmsAdapter by lazy { FilmsAdapter(::onItemClick) }
 
-    private fun onItemClick(data: Film) {
-        (requireActivity() as MainActivity).showFilmDetails(data)
+    private fun onItemClick(filmId: String) {
+        (requireActivity() as MainActivity).showFilmDetails(filmId)
     }
 
     override fun onCreateView(
@@ -49,8 +48,8 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initUi()
+        initButtonListeners()
     }
-
 
     private fun initUi() {
         if (binding.rvFilmList.adapter != null) {
@@ -66,13 +65,19 @@ class HomeFragment : Fragment() {
                 if (resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
                     GridLayoutManager(requireContext(), 2)
                 } else {
-                    GridLayoutManager(requireContext(), 3)
+                    GridLayoutManager(requireContext(), 4)
                 }
             adapter = filmsAdapter
         }
+    }
 
+    private fun initButtonListeners() {
         binding.buttonSearch.setOnClickListener {
             viewModel.loadFilmsBySearchText(binding.editTextSearch.text.toString())
+        }
+
+        binding.chipTopfilms.setOnClickListener {
+            viewModel.loadTop250Films()
         }
     }
 
@@ -100,7 +105,7 @@ class HomeFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        viewModel.clear()
+     //   viewModel.clear()
         _binding = null
     }
 }

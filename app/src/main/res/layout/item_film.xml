@@ -12,17 +12,31 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+
         <ImageView
             android:id="@+id/iv_image"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="190dp"
             android:scaleType="centerCrop"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:src="@tools:sample/avatars" />
 
         <TextView
-            android:id="@+id/tv_id"
+            android:id="@+id/tv_rank"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#16629F"
+            android:gravity="center_horizontal"
+            android:padding="@dimen/padding_small"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_film_details_header"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/iv_image"
+            tools:text="1" />
+
+        <TextView
+            android:id="@+id/tv_imdb_rating"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#16629F"
@@ -33,7 +47,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            tools:text="Film ID" />
+            tools:text="⭐ 9.4 IMDB" />
 
         <TextView
             android:id="@+id/tv_title"
@@ -50,12 +64,11 @@
             android:id="@+id/tv_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="@dimen/padding_small"
+            android:paddingHorizontal="@dimen/padding_small"
             android:textSize="@dimen/text_size_standard"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_title"
             tools:text="Film description" />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

@@ -66,9 +66,9 @@ class MainActivity : AppCompatActivity() {
         beginTransaction.commit()
     }
 
-    fun showFilmDetails(data: Film) {
+    fun showFilmDetails(filmId: String) {
         navigateToFragment(DetailsFragment.newInstance().apply {
-            arguments = Bundle().apply { putString(FILM_ID_KEY, data.id) }
+            arguments = Bundle().apply { putString(FILM_ID_KEY, filmId) }
         }, isAddToBackStack = true)
     }
 }

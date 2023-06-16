@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import coil.load
+import jt.projects.gbfilms.R
 import jt.projects.gbfilms.databinding.FragmentDetailsBinding
 import jt.projects.gbfilms.model.FilmDetailsData
 import jt.projects.gbfilms.repository.dto.details.DetailsDTO
@@ -80,7 +81,10 @@ class DetailsFragment : Fragment() {
 
     private fun showData(data: DetailsDTO) {
         with(binding) {
-            tvRating.text = "⭐ ${data.imDbRating} IMDB rating"
+            if (data.imDbRating.isNotBlank()) {
+                tvRating.text = "⭐ ${data.imDbRating} IMDB rating"
+            }
+
             tvTitle.text = data.fullTitle
             tvDescription.text = data.plotLocal
             tvDescription.movementMethod = ScrollingMovementMethod()
@@ -104,7 +108,7 @@ class DetailsFragment : Fragment() {
             }
 
             ivImage.load(data.image) {
-                error(android.R.drawable.ic_delete)
+                error(R.drawable.baseline_image_not_supported_24)
             }
 
         }

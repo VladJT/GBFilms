@@ -1,6 +1,5 @@
 package jt.projects.gbfilms.ui.home
 
-import android.annotation.SuppressLint
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -19,9 +18,9 @@ class HomeViewModel(private val interactor: FilmsInteractor) : ViewModel() {
         get() {
             return liveData
         }
+
     private val compositeDisposable = CompositeDisposable()
 
-    @SuppressLint("CheckResult")
     fun loadFilmsBySearchText(searchText: String) {
         liveData.value = FilmData.Loading(null)
 
@@ -38,6 +37,19 @@ class HomeViewModel(private val interactor: FilmsInteractor) : ViewModel() {
                 })
                 .disposeBy(compositeDisposable)
         }
+    }
+
+    fun loadTop250Films() {
+        liveData.value = FilmData.Loading(null)
+        interactor.getTop250Films()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({ data ->
+                liveData.value = FilmData.Success(data)
+            }, { e ->
+                liveData.value = FilmData.Error(e)
+            })
+            .disposeBy(compositeDisposable)
     }
 
     fun clear() {

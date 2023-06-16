@@ -14,9 +14,17 @@ class FilmsInteractor(private val repo: IFilmsRepo) {
             .map { filmDTO ->
                 filmDTO.toFilmList()
             }
+            .onErrorReturn { throw RuntimeException("Ошибка получения данных по http") }
 
     fun getFilmDetailsByFilmId(filmId: String): Single<DetailsDTO> =
         repo.getFilmDetailsById(filmId)
+            .onErrorReturn { throw RuntimeException("Ошибка получения данных по http") }
 
+    fun getTop250Films(): Single<List<Film>> =
+        repo.getTop250Films()
+            .map { topFilmsDTO ->
+                topFilmsDTO.toFilmList()
+            }
+            .onErrorReturn { throw RuntimeException("Ошибка получения данных по http") }
 
 }

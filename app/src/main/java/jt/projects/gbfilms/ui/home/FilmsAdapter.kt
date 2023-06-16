@@ -4,13 +4,13 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import jt.projects.gbfilms.R
 import jt.projects.gbfilms.databinding.ItemFilmBinding
 import jt.projects.gbfilms.model.Film
 
 class FilmsAdapter(
-    private var onItemClicked: ((Film) -> Unit),
-) :
-    RecyclerView.Adapter<FilmsAdapter.FilmViewHolder>() {
+    private var onItemClicked: ((String) -> Unit),
+) : RecyclerView.Adapter<FilmsAdapter.FilmViewHolder>() {
 
     private var data: List<Film> = arrayListOf()
 
@@ -22,9 +22,7 @@ class FilmsAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FilmViewHolder {
         val binding = ItemFilmBinding.inflate(
-            LayoutInflater.from(parent.context),
-            parent,
-            false
+            LayoutInflater.from(parent.context), parent, false
         )
         return FilmViewHolder(binding)
     }
@@ -42,17 +40,19 @@ class FilmsAdapter(
         fun bind(data: Film) {
             if (layoutPosition != RecyclerView.NO_POSITION) {
                 with(binding) {
-                    tvId.text = data.id
-                    tvDescription.text = data.description
+                    tvRank.text = data.rank
                     tvTitle.text = data.title
-
-                    ivImage.load(data.imageUrl) {
-                        error(android.R.drawable.ic_delete)
+                    tvDescription.text = data.description
+                    if (data.imDbRating.isNotBlank()) {
+                        tvImdbRating.text = "⭐ ${data.imDbRating} IMDB rating"
                     }
 
+                    ivImage.load(data.imageUrl) {
+                        error(R.drawable.baseline_image_not_supported_24)
+                    }
 
                     this.root.setOnClickListener {
-                        onItemClicked(data)
+                        onItemClicked(data.id)
                     }
                 }
 

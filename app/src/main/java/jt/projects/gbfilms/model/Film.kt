@@ -4,5 +4,7 @@ data class Film(
     val id: String,
     val imageUrl: String,
     val title: String,
-    val description: String
+    val description: String,
+    val imDbRating: String="",
+    val rank: String=""
 )

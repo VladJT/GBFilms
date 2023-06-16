@@ -5,13 +5,13 @@ import io.reactivex.rxjava3.core.Single
 import jt.projects.gbfilms.BuildConfig
 import jt.projects.gbfilms.repository.dto.details.DetailsDTO
 import jt.projects.gbfilms.repository.dto.films.FilmDTO
+import jt.projects.gbfilms.repository.dto.topfilms.TopFilmsDTO
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
-import java.io.IOException
 
 class FilmsRemoteDataSource : IFilmsRepo {
 
@@ -31,6 +31,12 @@ class FilmsRemoteDataSource : IFilmsRepo {
             lang = "ru",
             apiKey = BuildConfig.API_KEY,
             filmId = filmId
+        )
+
+    override fun getTop250Films(): Single<TopFilmsDTO> =
+        getApi<TopFilmsAPI>().getTop250Films(
+            lang = "ru",
+            apiKey = BuildConfig.API_KEY
         )
 
 
