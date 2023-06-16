@@ -7,6 +7,7 @@
 - список актеров и их фото,
 - поиск по фильмам на главном экране
 
-![image](https://github.com/VladJT/GBFilms/assets/95467816/275b2f41-5952-49fe-8372-0272cbbcc0ad)
-![image](https://github.com/VladJT/GBFilms/assets/95467816/16a6c395-8deb-4f44-929d-80e796f73250)
-![image](https://github.com/VladJT/GBFilms/assets/95467816/04cdc693-4cdb-4bc2-bd0e-1c73f9c7b9f9)
+<img src="https://github.com/VladJT/GBFilms/assets/95467816/275b2f41-5952-49fe-8372-0272cbbcc0ad.png" width="250" >
+<img src="https://github.com/VladJT/GBFilms/assets/95467816/16a6c395-8deb-4f44-929d-80e796f73250.png" width="250" >
+<img src="https://github.com/VladJT/GBFilms/assets/95467816/04cdc693-4cdb-4bc2-bd0e-1c73f9c7b9f9.png" width="250" >
+
