@@ -1,5 +1,6 @@
 package jt.projects.gbfilms.ui.home
 
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -61,7 +62,12 @@ class HomeFragment : Fragment() {
         }
 
         binding.rvFilmList.apply {
-            layoutManager = GridLayoutManager(requireContext(), 2)
+            layoutManager =
+                if (resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
+                    GridLayoutManager(requireContext(), 2)
+                } else {
+                    GridLayoutManager(requireContext(), 3)
+                }
             adapter = filmsAdapter
         }
 
