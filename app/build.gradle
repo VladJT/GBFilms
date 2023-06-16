@@ -28,7 +28,8 @@ android {
     buildTypes {
         all {
             buildConfigField "String", "BASE_URL", "\"https://imdb-api.com/\""
-            buildConfigField "String", "API_KEY", "\"k_0v7ql0k0\""
+            buildConfigField "String", "API_KEY2", "\"k_0v7ql0k0\""
+            buildConfigField "String", "API_KEY", "\"k_84qus549\""
         }
 
         release {

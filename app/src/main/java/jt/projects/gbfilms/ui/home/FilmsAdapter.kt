@@ -45,6 +45,8 @@ class FilmsAdapter(
                     tvDescription.text = data.description
                     if (data.imDbRating.isNotBlank()) {
                         tvImdbRating.text = "⭐ ${data.imDbRating} IMDB rating"
+                    }else {
+                        tvImdbRating.text = "click for details"
                     }
 
                     ivImage.load(data.imageUrl) {
