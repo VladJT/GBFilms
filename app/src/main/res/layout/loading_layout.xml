@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:alpha="0.9"
-    android:background="?attr/colorSurface"
+    android:background="#CBD8DA"
     android:clickable="true"
     android:visibility="visible">
 

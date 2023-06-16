@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="180dp"
     android:layout_height="300dp"
-    android:layout_margin="4dp"
+    android:layout_margin="@dimen/margin_small"
     app:cardCornerRadius="8dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -27,6 +27,7 @@
             android:layout_height="wrap_content"
             android:background="#16629F"
             android:gravity="center_horizontal"
+            android:padding="@dimen/padding_small"
             android:textColor="@color/white"
             android:textSize="@dimen/text_size_standard"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -38,6 +39,7 @@
             android:id="@+id/tv_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:padding="@dimen/padding_small"
             android:textSize="@dimen/text_size_standard"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -48,6 +50,7 @@
             android:id="@+id/tv_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:padding="@dimen/padding_small"
             android:textSize="@dimen/text_size_standard"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_title"

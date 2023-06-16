@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="4dp">
+    android:padding="@dimen/padding_small">
 
     <View
         android:id="@+id/iv_bg"
@@ -20,7 +20,7 @@
         android:id="@+id/iv_image"
         android:layout_width="150dp"
         android:layout_height="200dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="@dimen/margin_standart"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toTopOf="@id/guideline2"
         app:layout_constraintStart_toStartOf="parent"
@@ -30,7 +30,7 @@
         android:id="@+id/ratingCircle"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="@dimen/margin_standart"
         app:cpb_background_progressbar_color="#b6bbd8"
         app:cpb_background_progressbar_width="2dp"
         app:cpb_progress="84"
@@ -48,7 +48,7 @@
         android:layout_height="wrap_content"
         android:paddingHorizontal="30dp"
         android:textColor="@color/white"
-        android:textSize="36sp"
+        android:textSize="@dimen/text_size_film_details_header"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -59,7 +59,7 @@
         android:id="@+id/label_description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="@dimen/margin_standart"
         android:text="Описание"
         android:textSize="@dimen/text_size_big"
         android:textStyle="bold"
@@ -76,7 +76,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/label_description"
-        app:layout_constraintVertical_bias="1.0"
         tools:text="Film description" />
 
     <TextView
@@ -104,8 +103,8 @@
         android:id="@+id/tv_awards"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:paddingEnd="4dp"
+        android:layout_marginTop="@dimen/margin_small"
+        android:paddingEnd="@dimen/padding_small"
         android:textColor="@color/white"
         android:textSize="@dimen/text_size_standard"
         app:layout_constraintEnd_toEndOf="parent"
@@ -127,7 +126,7 @@
         android:id="@+id/rvActors"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="@dimen/margin_standart"
         android:background="#DAD9D9"
         android:orientation="horizontal"
         android:overScrollMode="never"
@@ -155,12 +154,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/white"
+        android:paddingStart="@dimen/padding_standart"
         android:textSize="@dimen/text_size_standard"
         app:layout_constraintBottom_toBottomOf="@id/iv_bg"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/ratingCircle"
         app:layout_constraintTop_toTopOf="@id/ratingCircle"
-        tools:text="Metacritic rating" />
+        android:text="Metacritic rating" />
 
     <TextView
         android:id="@+id/tv_rating"
